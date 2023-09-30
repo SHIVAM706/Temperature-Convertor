@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Temperature Converter</title>
+    <style>
+        body {
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/back_our/20190628/ourmid/pngtree-simple-atmospheric-blue-temperature-needle-illustration-background-image_279280.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        #a {
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 35%;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: larger;
+        }
+
+        input[type="text"] {
+            width: 60%;
+            padding: 8px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #result {
+            margin-top: 20px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Temperature Converter</h1>
+    <div id="a">
+        <label for="celsius_input">Enter Temperature in Celsius:</label><br>
+        <input type="text" id="celsius_input" placeholder="Enter Temperature in Celsius">
+        <button onclick="convert('celsius_input', 'Celsius', 'Fahrenheit')">Convert</button>
+
+        <br><br>
+
+        <label for="Fahrenheit_input">Enter Temperature in Fahrenheit:</label><br>
+        <input type="text" id="Fahrenheit_input" placeholder="Enter Temperature in Fahrenheit">
+        <button onclick="convert('Fahrenheit_input', 'Fahrenheit', 'Celsius')">Convert</button>
+    </div>
+    <div id="result">Result is</div>
+    <script>
+        function convert(inputId, fromUnit, toUnit) {
+            const inputElement = document.getElementById(inputId);
+            const inputValue = parseFloat(inputElement.value);
+            if (!isNaN(inputValue)) {
+                const result = fromUnit === 'Celsius' ? (inputValue * 9/5) + 32 : (inputValue - 32) * 5/9;
+                document.getElementById("result").innerHTML = ${inputValue} ${fromUnit} = ${result.toFixed(2)} ${toUnit};
+            } else {
+                document.getElementById("result").innerHTML = "Invalid Input. Please enter a valid number.";
+            }
+        }
+    </script>
+</body>
+</html>
